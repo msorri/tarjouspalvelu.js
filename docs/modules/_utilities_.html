@@ -1,0 +1,494 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>&quot;utilities&quot; | tarjouspalvelu.js</title>
+	<meta name="description" content="Documentation for tarjouspalvelu.js">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">tarjouspalvelu.js</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="_utilities_.html">&quot;utilities&quot;</a>
+				</li>
+			</ul>
+			<h1>Module &quot;utilities&quot;</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utilities_.html#boolfromyesorno" class="tsd-kind-icon">bool<wbr>From<wbr>Yes<wbr>OrNo</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utilities_.html#companyslugtoid" class="tsd-kind-icon">company<wbr>Slug<wbr>ToId</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utilities_.html#getsession" class="tsd-kind-icon">get<wbr>Session</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utilities_.html#getsessionlanguage" class="tsd-kind-icon">get<wbr>Session<wbr>Language</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utilities_.html#logintosession" class="tsd-kind-icon">login<wbr>ToSession</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utilities_.html#matchlocale" class="tsd-kind-icon">match<wbr>Locale</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utilities_.html#parselocalizeddate" class="tsd-kind-icon">parse<wbr>Localized<wbr>Date</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utilities_.html#setsessionlanguage" class="tsd-kind-icon">set<wbr>Session<wbr>Language</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="boolfromyesorno" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> bool<wbr>From<wbr>Yes<wbr>OrNo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">bool<wbr>From<wbr>Yes<wbr>OrNo<span class="tsd-signature-symbol">(</span>text<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/c4b8ca4/src/utilities.ts#L299">utilities.ts:299</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the boolean value of a yes/no text, independent of the language</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>text: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The text of the value to be converted</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>Boolean dependent on the yes/no value given</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="companyslugtoid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> company<wbr>Slug<wbr>ToId</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">company<wbr>Slug<wbr>ToId<span class="tsd-signature-symbol">(</span>slug<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/c4b8ca4/src/utilities.ts#L16">utilities.ts:16</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Convert a Tarjouspalvelu company slug to it&#39;s numeric ID number</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>slug: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The slug of the company to convert</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>Numeric company ID of the provided slug</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="getsession" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Session</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Session<span class="tsd-signature-symbol">(</span>slug<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.isession.html" class="tsd-signature-type">ISession</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/c4b8ca4/src/utilities.ts#L49">utilities.ts:49</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get a Tarjouspalvelu session</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>slug: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The slug of the company to get the session UUID with</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.isession.html" class="tsd-signature-type">ISession</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>Session object including the session UUID and ID</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="getsessionlanguage" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Session<wbr>Language</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Session<wbr>Language<span class="tsd-signature-symbol">(</span>companyId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, session<span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_.isession.html" class="tsd-signature-type">ISession</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/c4b8ca4/src/utilities.ts#L243">utilities.ts:243</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the current locale of a Tarjouspalvelu session</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>companyId: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The ID of the company to get the locale with (can be anyone, session is not restricted to it in any way)</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>session: <a href="../interfaces/_interfaces_.isession.html" class="tsd-signature-type">ISession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Session object to get the locale from</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The current locale of the session</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="logintosession" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> login<wbr>ToSession</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">login<wbr>ToSession<span class="tsd-signature-symbol">(</span>slug<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, session<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_interfaces_.isession.html" class="tsd-signature-type">ISession</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.isession.html" class="tsd-signature-type">ISession</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/c4b8ca4/src/utilities.ts#L89">utilities.ts:89</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Log in a Tarjouspalvelu session</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>slug: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The slug of the company to log in with (can be anyone, session is not restricted to it in any way)</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>username: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The user name used for logging in</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>password: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The password used for logging in</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> session: <a href="../interfaces/_interfaces_.isession.html" class="tsd-signature-type">ISession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Session object to be filled with the token</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.isession.html" class="tsd-signature-type">ISession</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The given session object filled with the session token</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="matchlocale" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> match<wbr>Locale</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">match<wbr>Locale<span class="tsd-signature-symbol">(</span>html<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"fi-FI"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"sv-SE"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"en-GB"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"da-DK"</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/c4b8ca4/src/utilities.ts#L274">utilities.ts:274</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Match the current locale from page HTML content</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>html: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The HTML source of the page to get the locale from</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">"fi-FI"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"sv-SE"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"en-GB"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"da-DK"</span></h4>
+							<p>The current locale</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="parselocalizeddate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> parse<wbr>Localized<wbr>Date</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Localized<wbr>Date<span class="tsd-signature-symbol">(</span>date<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, locale<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"fi-FI"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"sv-SE"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"en-GB"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"da-DK"</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Date</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/c4b8ca4/src/utilities.ts#L322">utilities.ts:322</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the Date object of a given localized string representation of date by the locale given, and convert it to UTC from Europe/Helsinki time</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>date: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The localized string to be converted</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>locale: <span class="tsd-signature-type">"fi-FI"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"sv-SE"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"en-GB"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"da-DK"</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The locale to convert the string from</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Date</span></h4>
+							<p>Date object of the given localized date in UTC</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="setsessionlanguage" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> set<wbr>Session<wbr>Language</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Session<wbr>Language<span class="tsd-signature-symbol">(</span>companyId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, language<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"fi-FI"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"sv-SE"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"en-GB"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"da-DK"</span>, session<span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_.isession.html" class="tsd-signature-type">ISession</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.isession.html" class="tsd-signature-type">ISession</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/c4b8ca4/src/utilities.ts#L169">utilities.ts:169</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set the language of a Tarjouspalvelu session</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>companyId: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The ID of the company to set the language with (can be anyone, session is not restricted to it in any way)</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>language: <span class="tsd-signature-type">"fi-FI"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"sv-SE"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"en-GB"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"da-DK"</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The language to set. Must be either &quot;fi-FI&quot;, &quot;sv-SE&quot;, &quot;en-GB&quot; or &quot;da-DK&quot;.</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>session: <a href="../interfaces/_interfaces_.isession.html" class="tsd-signature-type">ISession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Session object to set the language for</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.isession.html" class="tsd-signature-type">ISession</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The given session object that has the language set</p>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_company_.html">&quot;company&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_interfaces_.html">&quot;interfaces&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_notice_.html">&quot;notice&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_tender_.html">&quot;tender&quot;</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="_utilities_.html">&quot;utilities&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_utilities_.html#boolfromyesorno" class="tsd-kind-icon">bool<wbr>From<wbr>Yes<wbr>OrNo</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_utilities_.html#companyslugtoid" class="tsd-kind-icon">company<wbr>Slug<wbr>ToId</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_utilities_.html#getsession" class="tsd-kind-icon">get<wbr>Session</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_utilities_.html#getsessionlanguage" class="tsd-kind-icon">get<wbr>Session<wbr>Language</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_utilities_.html#logintosession" class="tsd-kind-icon">login<wbr>ToSession</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_utilities_.html#matchlocale" class="tsd-kind-icon">match<wbr>Locale</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_utilities_.html#parselocalizeddate" class="tsd-kind-icon">parse<wbr>Localized<wbr>Date</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_utilities_.html#setsessionlanguage" class="tsd-kind-icon">set<wbr>Session<wbr>Language</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
