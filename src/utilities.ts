@@ -4,7 +4,7 @@ import cheerio from 'cheerio';
 import parse from 'date-fns/parse';
 import { zonedTimeToUtc } from 'date-fns-tz';
 
-import { ISession } from './interfaces';
+import { Language, Session } from './interfaces';
 
 /**
  * Convert a Tarjouspalvelu company slug to it's numeric ID number
@@ -46,7 +46,7 @@ export const companySlugToId = async (slug: string): Promise<number> => {
  *
  * @returns Session object including the session UUID and ID
  */
-export const getSession = async (slug: string): Promise<ISession> => {
+export const getSession = async (slug: string): Promise<Session> => {
     let uuid, id;
 
     await axios
@@ -90,8 +90,8 @@ export const loginToSession = async (
     slug: string,
     username: string,
     password: string,
-    session?: ISession
-): Promise<ISession> => {
+    session?: Session
+): Promise<Session> => {
     // If no session is provided to login with, create a new session with the provided slug
     if (!session) session = await getSession(slug);
 
@@ -168,9 +168,9 @@ export const loginToSession = async (
  */
 export const setSessionLanguage = async (
     companyId: number,
-    language: 'fi-FI' | 'sv-SE' | 'en-GB' | 'da-DK',
-    session: ISession
-): Promise<ISession> => {
+    language: Language,
+    session: Session
+): Promise<Session> => {
     // Get WebForms inputs for the actual login request
     const response = await axios
         .get(
@@ -242,7 +242,7 @@ export const setSessionLanguage = async (
  */
 export const getSessionLanguage = async (
     companyId: number,
-    session: ISession
+    session: Session
 ): Promise<string> => {
     // Get the notices page of a company, where the locale is shown
     const page = await axios
@@ -273,17 +273,20 @@ export const getSessionLanguage = async (
  */
 export const matchLocale = (
     html: string
-): 'fi-FI' | 'sv-SE' | 'en-GB' | 'da-DK' => {
+): Language => {
     const locale = html.match(/__cultureInfo = {"name":"(.*?)","/);
 
     if (locale === null) throw new Error('Failed to match the locale');
 
     switch (locale[1]) {
         case 'fi-FI':
+            return Language.Fi
         case 'sv-SE':
+            return Language.Sv
         case 'en-GB':
+            return Language.En
         case 'da-DK':
-            return locale[1];
+            return Language.Da
     }
 
     throw new Error('Failed to match the locale');
@@ -321,7 +324,7 @@ export const boolFromYesOrNo = (text: string): boolean => {
  */
 export const parseLocalizedDate = (
     date: string,
-    locale: 'fi-FI' | 'sv-SE' | 'en-GB' | 'da-DK'
+    locale: Language
 ): Date => {
     // Table for selecting the correct date format to use
     const languageTable = {

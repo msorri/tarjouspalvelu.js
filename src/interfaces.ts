@@ -1,24 +1,31 @@
-export interface ISession {
+export interface Session {
     uuid: string;
     id: string;
     token?: string;
 }
 
-export interface ICompany {
+export enum Language {
+    Fi = 'fi-FI',
+    Sv = 'sv-SE',
+    En = 'en-GB',
+    Da = 'da-DK'
+}
+
+export interface Company {
     id: number;
     slug: string;
     name: string;
     logo: string | undefined;
 }
 
-export interface INotices {
+export interface Notices {
     // supplierRegisters: [];
-    dynamicPurchasingSystems: IDynamicPurchasingSystem[];
-    notices: INotice[];
-    language: 'fi-FI' | 'sv-SE' | 'en-GB' | 'da-DK';
+    dynamicPurchasingSystems: DynamicPurchasingSystem[];
+    notices: Notice[];
+    language: Language;
 }
 
-export interface IDynamicPurchasingSystem {
+export interface DynamicPurchasingSystem {
     id: number;
     customId: string;
     unit: string;
@@ -30,7 +37,7 @@ export interface IDynamicPurchasingSystem {
     originalDeadline: string | null;
 }
 
-export interface INotice {
+export interface Notice {
     id: number;
     customId: string;
     isBeingCorrected?: boolean;
@@ -44,7 +51,7 @@ export interface INotice {
     types: string[];
     shortDescription?: string;
     description?: string | null;
-    attachments?: INoticeAttachment[];
+    attachments?: NoticeAttachment[];
     links?: string[];
     /* procedure: string; @TODO: do some logic that checks if it's a tender notice and then get these tender-specific fields
     partialTendersAccepted: boolean;
@@ -53,7 +60,7 @@ export interface INotice {
     selectionCriteria: string; */
 }
 
-export interface INoticeAttachment {
+export interface NoticeAttachment {
     fileName: string;
     fileUuid: string;
 }
