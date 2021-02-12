@@ -17,7 +17,7 @@ You need a Tarjouspalvelu.fi user to get a specific notice. The registration doe
 
 Because of the scraping nature of this module, the company IDs used in the functions are designed to consume the least amount of requests, and resolving slugs to IDs consumes one. 
 
-This means that slugs and numeric IDs are used quite wildly depending on the requirements of the function, and thus the implementing application should have its own dictionary of the company slugs and IDs. Keeping it up to date can be accomplished with the `getNotices` function.
+This means that slugs and numeric IDs are used quite wildly depending on the requirements of the function, and thus the implementing application should have its own dictionary of the company slugs and IDs. Keeping it up to date can be accomplished with the `getCompanies` function.
 
 
 ## Documentation
