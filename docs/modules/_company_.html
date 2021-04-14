@@ -86,13 +86,13 @@
 					<a name="getcompanies" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Companies</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Companies<span class="tsd-signature-symbol">(</span>getLogos<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.icompany.html" class="tsd-signature-type">ICompany</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Companies<span class="tsd-signature-symbol">(</span>getLogos<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.company.html" class="tsd-signature-type">Company</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/d0bdd74/src/company.ts#L16">company.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/897aa1a/src/company.ts#L16">company.ts:16</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -111,7 +111,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.icompany.html" class="tsd-signature-type">ICompany</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.company.html" class="tsd-signature-type">Company</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>Array of the companies</p>
 						</li>
 					</ul>
@@ -120,13 +120,13 @@
 					<a name="getnotices" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Notices</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Notices<span class="tsd-signature-symbol">(</span>companyId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, session<span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_.isession.html" class="tsd-signature-type">ISession</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.inotices.html" class="tsd-signature-type">INotices</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Notices<span class="tsd-signature-symbol">(</span>companyId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, session<span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_.session.html" class="tsd-signature-type">Session</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.notices.html" class="tsd-signature-type">Notices</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/d0bdd74/src/company.ts#L94">company.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/897aa1a/src/company.ts#L94">company.ts:94</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -149,7 +149,7 @@
 									</div>
 								</li>
 								<li>
-									<h5>session: <a href="../interfaces/_interfaces_.isession.html" class="tsd-signature-type">ISession</a></h5>
+									<h5>session: <a href="../interfaces/_interfaces_.session.html" class="tsd-signature-type">Session</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>The Session object to be used for getting the notices. Does not have to be logged in.</p>
@@ -157,7 +157,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.inotices.html" class="tsd-signature-type">INotices</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.notices.html" class="tsd-signature-type">Notices</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>Notices object that includes all dynamic purchasing systems and notices</p>
 						</li>
 					</ul>
@@ -206,6 +206,9 @@
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>

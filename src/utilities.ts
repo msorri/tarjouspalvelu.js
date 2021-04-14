@@ -243,7 +243,7 @@ export const setSessionLanguage = async (
 export const getSessionLanguage = async (
     companyId: number,
     session: Session
-): Promise<string> => {
+): Promise<Language> => {
     // Get the notices page of a company, where the locale is shown
     const page = await axios
         .get(
