@@ -340,3 +340,25 @@ export const parseLocalizedDate = (
         'Europe/Helsinki' // Tarjouspalvelu.fi always returns times in Helsinki time
     );
 };
+
+/**
+ * Build a link for a single file attachment in a notice by its UUID. *Note: Tarjouspalvelu links are download-only by default.*
+ * 
+ * @param uuid - The UUID of the file to build the link from
+ * 
+ * @returns The link to the file
+ */
+export const buildAttachmentLink = (fileUuid: string): string => {
+    return `https://tarjouspalvelu.fi/Document/Open/?fileType=TarjPyynTied&id=${fileUuid}`;
+};
+
+/**
+ * Build a link for a all file attachments in a single notice, in a ZIP file. *Note: Tarjouspalvelu links are download-only by default.*
+ * 
+ * @param noticeId - The ID of the notice containing the file attachments
+ * 
+ * @returns The link to the ZIP file
+ */
+export const buildAllAttachmentsLink = (noticeId: number): string => {
+    return `https://tarjouspalvelu.fi/Zip/TarjousPyynnonLiitteet/${noticeId.toString()}`;
+};
