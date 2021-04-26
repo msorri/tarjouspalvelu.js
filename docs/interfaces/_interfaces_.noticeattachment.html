@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>INotices | tarjouspalvelu.js</title>
+	<title>NoticeAttachment | tarjouspalvelu.js</title>
 	<meta name="description" content="Documentation for tarjouspalvelu.js">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -59,10 +59,10 @@
 					<a href="../modules/_interfaces_.html">&quot;interfaces&quot;</a>
 				</li>
 				<li>
-					<a href="_interfaces_.inotices.html">INotices</a>
+					<a href="_interfaces_.noticeattachment.html">NoticeAttachment</a>
 				</li>
 			</ul>
-			<h1>Interface INotices</h1>
+			<h1>Interface NoticeAttachment</h1>
 		</div>
 	</div>
 </header>
@@ -73,7 +73,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">INotices</span>
+						<span class="target">NoticeAttachment</span>
 					</li>
 				</ul>
 			</section>
@@ -84,9 +84,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.inotices.html#dynamicpurchasingsystems" class="tsd-kind-icon">dynamic<wbr>Purchasing<wbr>Systems</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.inotices.html#language" class="tsd-kind-icon">language</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.inotices.html#notices" class="tsd-kind-icon">notices</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.noticeattachment.html#filename" class="tsd-kind-icon">file<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.noticeattachment.html#fileuuid" class="tsd-kind-icon">file<wbr>Uuid</a></li>
 							</ul>
 						</section>
 					</div>
@@ -95,32 +94,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="dynamicpurchasingsystems" class="tsd-anchor"></a>
-					<h3>dynamic<wbr>Purchasing<wbr>Systems</h3>
-					<div class="tsd-signature tsd-kind-icon">dynamic<wbr>Purchasing<wbr>Systems<span class="tsd-signature-symbol">:</span> <a href="_interfaces_.idynamicpurchasingsystem.html" class="tsd-signature-type">IDynamicPurchasingSystem</a><span class="tsd-signature-symbol">[]</span></div>
+					<a name="filename" class="tsd-anchor"></a>
+					<h3>file<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">file<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/d0bdd74/src/interfaces.ts#L16">interfaces.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/897aa1a/src/interfaces.ts#L64">interfaces.ts:64</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="language" class="tsd-anchor"></a>
-					<h3>language</h3>
-					<div class="tsd-signature tsd-kind-icon">language<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"fi-FI"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"sv-SE"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"en-GB"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"da-DK"</span></div>
+					<a name="fileuuid" class="tsd-anchor"></a>
+					<h3>file<wbr>Uuid</h3>
+					<div class="tsd-signature tsd-kind-icon">file<wbr>Uuid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/d0bdd74/src/interfaces.ts#L18">interfaces.ts:18</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="notices" class="tsd-anchor"></a>
-					<h3>notices</h3>
-					<div class="tsd-signature tsd-kind-icon">notices<span class="tsd-signature-symbol">:</span> <a href="_interfaces_.inotice.html" class="tsd-signature-type">INotice</a><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/d0bdd74/src/interfaces.ts#L17">interfaces.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/897aa1a/src/interfaces.ts#L65">interfaces.ts:65</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -151,38 +140,38 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.icompany.html" class="tsd-kind-icon">ICompany</a>
+					<li class=" tsd-kind-enum tsd-parent-kind-module">
+						<a href="../enums/_interfaces_.language.html" class="tsd-kind-icon">Language</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.idynamicpurchasingsystem.html" class="tsd-kind-icon">IDynamic<wbr>Purchasing<wbr>System</a>
+						<a href="_interfaces_.company.html" class="tsd-kind-icon">Company</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.inotice.html" class="tsd-kind-icon">INotice</a>
+						<a href="_interfaces_.dynamicpurchasingsystem.html" class="tsd-kind-icon">Dynamic<wbr>Purchasing<wbr>System</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.inoticeattachment.html" class="tsd-kind-icon">INotice<wbr>Attachment</a>
+						<a href="_interfaces_.notice.html" class="tsd-kind-icon">Notice</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.inotices.html" class="tsd-kind-icon">INotices</a>
+						<a href="_interfaces_.noticeattachment.html" class="tsd-kind-icon">Notice<wbr>Attachment</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.inotices.html#dynamicpurchasingsystems" class="tsd-kind-icon">dynamic<wbr>Purchasing<wbr>Systems</a>
+								<a href="_interfaces_.noticeattachment.html#filename" class="tsd-kind-icon">file<wbr>Name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.inotices.html#language" class="tsd-kind-icon">language</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.inotices.html#notices" class="tsd-kind-icon">notices</a>
+								<a href="_interfaces_.noticeattachment.html#fileuuid" class="tsd-kind-icon">file<wbr>Uuid</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.isession.html" class="tsd-kind-icon">ISession</a>
+						<a href="_interfaces_.notices.html" class="tsd-kind-icon">Notices</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_interfaces_.session.html" class="tsd-kind-icon">Session</a>
 					</li>
 				</ul>
 			</nav>
@@ -199,6 +188,9 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 		</div>
 	</div>

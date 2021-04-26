@@ -1,7 +1,7 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
 
-import { INotice, ISession } from './interfaces';
+import { Notice, Session } from './interfaces';
 import { getTenderId, removeTender } from './tender';
 import { matchLocale, parseLocalizedDate } from './utilities';
 
@@ -18,9 +18,9 @@ import { matchLocale, parseLocalizedDate } from './utilities';
 export const getNotice = async (
     companyId: number,
     noticeId: number,
-    session: ISession,
+    session: Session,
     cleanup = true
-): Promise<INotice> => {
+): Promise<Notice> => {
     // Initialize the notice by going to the full notice page - this is required for the subpages to load because the notice ID is apparently stored in the session???
     const noticePage = await axios
         .get(

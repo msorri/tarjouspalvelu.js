@@ -3,7 +3,7 @@ import cheerio from 'cheerio';
 import imageToBase64 from 'image-to-base64';
 import querystring from 'querystring';
 
-import { ICompany, INotices, ISession } from './interfaces';
+import { Company, Notices, Session } from './interfaces';
 import { matchLocale, parseLocalizedDate } from './utilities';
 
 /**
@@ -13,7 +13,7 @@ import { matchLocale, parseLocalizedDate } from './utilities';
  *
  * @returns Array of the companies
  */
-export const getCompanies = async (getLogos = false): Promise<ICompany[]> => {
+export const getCompanies = async (getLogos = false): Promise<Company[]> => {
     // Fetch the tarjouspalvelu index page
     const response = await axios.get('https://tarjouspalvelu.fi/Default/Index');
     if (!response)
@@ -25,7 +25,7 @@ export const getCompanies = async (getLogos = false): Promise<ICompany[]> => {
     // Get company cells from the main table
     const companiesTable = $('tr > td');
 
-    const companies: ICompany[] = [];
+    const companies: Company[] = [];
 
     for (let i = 0; i < companiesTable.length; i++) {
         // If the cell has no style, it doesn't include a company and is only used for spacing
@@ -93,8 +93,8 @@ export const getCompanies = async (getLogos = false): Promise<ICompany[]> => {
  */
 export const getNotices = async (
     companyId: number,
-    session: ISession
-): Promise<INotices> => {
+    session: Session
+): Promise<Notices> => {
     // Fetch the tarjouspalvelu notices page
     const response = await axios
         .get(
@@ -116,7 +116,7 @@ export const getNotices = async (
     const $ = cheerio.load(response.data);
 
     // Initialize notices variable
-    const notices: INotices = {
+    const notices: Notices = {
         // supplierRegisters: [],
         dynamicPurchasingSystems: [],
         notices: [],

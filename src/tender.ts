@@ -2,7 +2,7 @@ import axios from 'axios';
 import querystring from 'querystring';
 import cheerio from 'cheerio';
 
-import { ISession } from './interfaces';
+import { Session } from './interfaces';
 
 /**
  * Get the ID of a tender in progress by its notice number
@@ -16,7 +16,7 @@ import { ISession } from './interfaces';
 export const getTenderId = async (
     companyId: number,
     noticeId: number,
-    session: ISession
+    session: Session
 ): Promise<string> => {
     const page = await axios
         .get(
@@ -55,7 +55,7 @@ export const getTenderId = async (
 export const removeTender = async (
     companyId: number,
     tenderId: string,
-    session: ISession
+    session: Session
 ): Promise<void> => {
     const response = await axios
         .post(
