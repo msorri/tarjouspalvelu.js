@@ -93,14 +93,14 @@ export const getNotice = async (
         deadline:
             d('#valDueDate').text().length !== 0 // Check the length of the deadline, because even if there's no deadline the element still exists (but the others don't???)
                 ? parseLocalizedDate(
-                      d('#valDueDate').text().replace('  (UTC +2)', ''), // Remove the timezone indication before passing it on
+                      d('#valDueDate').text().split('  (UTC')[0], // Remove the timezone indication before passing it on
                       locale
                   )
                 : null, // If there is no deadline, return undefined
 
         originalDeadline:
             d('#valDueDate').text().length !== 0 // Check the length of the deadline, because even if there's no deadline the element still exists (but the others don't???)
-                ? d('#valDueDate').text().replace('  (UTC +2)', '') // Remove the timezone indication before passing it on
+                ? d('#valDueDate').text().split('  (UTC')[0] // Remove the timezone indication before passing it on
                 : null, // If there is no deadline, return undefined
 
         unit: d('#valHankYksMarkNimi').text(),
