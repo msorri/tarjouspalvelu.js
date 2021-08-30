@@ -4,7 +4,7 @@ import cheerio from 'cheerio';
 import parse from 'date-fns/parse';
 import { zonedTimeToUtc } from 'date-fns-tz';
 
-import { Language, Session } from './interfaces';
+import { Language, Session, Notice, NoticeIdentification } from './interfaces';
 
 /**
  * Convert a Tarjouspalvelu company slug to it's numeric ID number
@@ -342,23 +342,35 @@ export const parseLocalizedDate = (
 };
 
 /**
- * Build a link for a single file attachment in a notice by its UUID. *Note: Tarjouspalvelu links are download-only by default.*
- * 
- * @param uuid - The UUID of the file to build the link from
- * 
- * @returns The link to the file
+ * Resolve a Tarjouspalvelu.fi global UUID (usually tpk or tpg)
+ *
+ * @param slug          - The slug of the company from the notice. An incorrect one will cause an error.
+ * @param uuid          - The UUID of the notice to get
+ * @param getFullNotice - Whether to get the full notice or only the identification details for it. Defaults to true.
+ *
+ * @returns The full notice or identification details for the notice
  */
-export const buildAttachmentLink = (fileUuid: string): string => {
-    return `https://tarjouspalvelu.fi/Document/Open/?fileType=TarjPyynTied&id=${fileUuid}`;
-};
+export const resolveGlobalUuid = async (
+    slug: string,
+    uuid: string,
+    getFullNotice? = true
+): Promise<Notice | NoticeIdentification> => {
+    await axios
+        .head(`https://tarjouspalvelu.fi/${slug}`, {
+            maxRedirects: 0,
+        })
+        .catch((error) => {
+            if (
+                error.response.headers.location ===
+                'https://tarjouspalvelu.fi/Default/Index'
+            )
+                throw new Error('Invalid company slug');
 
-/**
- * Build a link for a all file attachments in a single notice, in a ZIP file. *Note: Tarjouspalvelu links are download-only by default.*
- * 
- * @param noticeId - The ID of the notice containing the file attachments
- * 
- * @returns The link to the ZIP file
- */
-export const buildAllAttachmentsLink = (noticeId: number): string => {
-    return `https://tarjouspalvelu.fi/Zip/TarjousPyynnonLiitteet/${noticeId.toString()}`;
+            uuid = querystring
+                .parse(error.response.headers.location)
+                .g.toString();
+            id = error.response.headers['set-cookie']
+                .join('')
+                .match(/TP=(.*?);/)[1];
+        });
 };

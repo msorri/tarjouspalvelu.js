@@ -64,3 +64,8 @@ export interface NoticeAttachment {
     fileName: string;
     fileUuid: string;
 }
+
+export interface NoticeIdentification {
+    companyId: number;
+    id: number;
+}
