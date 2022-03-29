@@ -1,23 +1,18 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
-import imageToBase64 from 'image-to-base64';
 import querystring from 'querystring';
 
 import { Company, Notices, Session } from './interfaces';
-import { matchLocale, parseLocalizedDate } from './utilities';
+import { matchLocale, parseLocalizedDate, fetchImage } from './utilities';
 
 /**
  * Get all companies from the Tarjouspalvelu index page. **Note that this may exclude some companies that aren't listed there.**
  *
- * @param getLogos - Get the company logos in Base64 format
- *
  * @returns Array of the companies
  */
-export const getCompanies = async (getLogos = false): Promise<Company[]> => {
+export const getCompanies = async (): Promise<Company[]> => {
     // Fetch the tarjouspalvelu index page
     const response = await axios.get('https://tarjouspalvelu.fi/Default/Index');
-    if (!response)
-        throw new Error('Failed getting index page from tarjouspalvelu');
 
     // Initialize cheerio with the fetched response
     const $ = cheerio.load(response.data);
@@ -59,26 +54,100 @@ export const getCompanies = async (getLogos = false): Promise<Company[]> => {
         // Get company full name from the title
         const name = $($(companiesTable[i]).find('p')[0]).text();
 
-        // If the getLogos parameter is set, get the image in base64 format
-        const logo = getLogos
-            ? await imageToBase64(
-                  `https://tarjouspalvelu.fi${$(
-                      $(companiesTable[i]).find('img')[0]
-                  ).attr('src')}`
-              )
-            : undefined;
-
         // Push the fetched company data to the companies array
         companies.push({
             id,
             slug,
             name,
-            logo,
         });
     }
 
     // Return the filled companies array
     return companies;
+};
+
+/**
+ * Get the logo of a company.
+ *
+ * @param companyId - The ID of the company to get the logo of
+ *
+ * @returns The logo of the company in Base64 format
+ */
+export const getCompanyLogo = async (companyId: number): Promise<string> => {
+    return await fetchImage(
+        `https://tarjouspalvelu.fi/Default/Image/${companyId}`
+    );
+};
+
+/**
+ * Get the procurement organization ID of a company.
+ *
+ * @param companyId - The ID of the company to get the procurement organization ID of
+ *
+ * @returns The procurement organization ID of the company
+ */
+export const getCompanyProcurementOrganizationId = async (
+    companyId: number,
+    session: Session
+): Promise<number> => {
+    // Fetch the company index page
+    const page = await axios
+        .get(
+            `https://tarjouspalvelu.fi/default.aspx?p=${companyId}&g=${session.uuid}`,
+            {
+                headers: { Cookie: `ASP.NET_SessionId_TP=${session.id};` },
+                maxRedirects: 0,
+            }
+        )
+        .catch((error) => {
+            if (error.response.status === 302)
+                throw new Error('Failed to load page, bad session?');
+            else throw new Error('Failed to load page');
+        });
+
+    // The procurement organization id is in a hidden form element, e.g. id="ctl00_PageContent_HankOrgIdHidden" value="<ID>" />
+    const id = page.data.match(/HankOrgIdHidden" value="(.*?)" \/>/)[1];
+
+    return parseInt(id);
+};
+
+/**
+ * Get the procurement units of a company by its **procurement organization ID.**
+ *
+ * **Requires a logged in session.**
+ *
+ * @param companyId - The ID of the company to get the procurement units of
+ *
+ * @returns The procurement units of the company in an array
+ */
+export const getCompanyProcurementUnits = async (
+    procurementOrganizationId: number,
+    session: Session
+): Promise<string[]> => {
+    // Fetch the company index page
+    const page = await axios
+        .get(
+            `https://tarjouspalvelu.fi/Vahtipalvelu/PalvelukohtainenVahtipalvelu/PalvelunYksikot?hankintaorganisaatioId=${procurementOrganizationId}`,
+            {
+                headers: {
+                    Cookie: `TarjPalv=${session.token};`,
+                },
+                maxRedirects: 0,
+            }
+        )
+        .catch((error) => {
+            if (error.response.status === 302)
+                throw new Error('Failed to load notice, bad session?');
+            else throw new Error('Failed to load notice');
+        });
+
+    const $ = cheerio.load(page.data);
+
+    return $('span') // Get the procurement units from the span elements
+        .map((i, el) => {
+            return $(el).text(); // The text of each span element is the procurement unit name
+        })
+        .toArray() as unknown as string[]; // bit sketchy but it works
 };
 
 /**
@@ -230,24 +299,25 @@ export const getNotices = async (
         });
     }
 
+    // TODO: Add support for supplier registers
     /* if (callType === 'sr' || callType === 'all') {
-                const srCookieJar = new tough.CookieJar();
-                const srResponse = await axios.post(
-                    `https://tarjouspalvelu.fi/TarjousPyynto/KelpuuttamisJarjestelmatLista?pid=${companyId}`,
-                    {
-                        jar: srCookieJar,
-                        withCredentials: true,
-                        maxRedirects: 0,
-                        validateStatus: (status) => status === 200,
-                        headers: { Referer: 'https://tarjouspalvelu.fi/tarjouspyynnot.aspx?p=1' },
-                    },
-                );
+              const srCookieJar = new tough.CookieJar();
+              const srResponse = await axios.post(
+                  `https://tarjouspalvelu.fi/TarjousPyynto/KelpuuttamisJarjestelmatLista?pid=${companyId}`,
+                  {
+                      jar: srCookieJar,
+                      withCredentials: true,
+                      maxRedirects: 0,
+                      validateStatus: (status) => status === 200,
+                      headers: { Referer: 'https://tarjouspalvelu.fi/tarjouspyynnot.aspx?p=1' },
+                  },
+              );
 
-                return srResponse;
+              return srResponse;
 
-                const srHtml = mainResponse.data;
-                const sr$ = cheerio.load(srHtml);
-            } */
+              const srHtml = mainResponse.data;
+              const sr$ = cheerio.load(srHtml);
+          } */
 
     // Return the filled notices object
     return notices;
