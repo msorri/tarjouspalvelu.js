@@ -137,8 +137,8 @@ export const getCompanyProcurementUnits = async (
         )
         .catch((error) => {
             if (error.response.status === 302)
-                throw new Error('Failed to load notice, bad session?');
-            else throw new Error('Failed to load notice');
+                throw new Error('Failed to load procurement units, bad session?');
+            else throw new Error('Failed to load procurement units');
         });
 
     const $ = cheerio.load(page.data);
