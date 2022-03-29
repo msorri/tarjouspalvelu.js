@@ -38,7 +38,7 @@ export const getCompanies = async (): Promise<Company[]> => {
             $(companiesTable[i]).find('img')[0]
         )
             .attr('src')
-            ?.substr(15);
+            ?.substring(15);
 
         if (!id) throw new Error('Failed getting company id');
 
@@ -47,7 +47,7 @@ export const getCompanies = async (): Promise<Company[]> => {
         // Get company slug from company link, omitting the tarjouspalvelu.fi url
         const slug = $($(companiesTable[i]).find('a')[0])
             .attr('href')
-            ?.substr(26);
+            ?.substring(26);
 
         if (!slug) throw new Error('Failed getting company slug');
 
@@ -137,7 +137,9 @@ export const getCompanyProcurementUnits = async (
         )
         .catch((error) => {
             if (error.response.status === 302)
-                throw new Error('Failed to load procurement units, bad session?');
+                throw new Error(
+                    'Failed to load procurement units, bad session?'
+                );
             else throw new Error('Failed to load procurement units');
         });
 
@@ -206,12 +208,14 @@ export const getNotices = async (
                 : false;
 
         notices.dynamicPurchasingSystems.push({
-            id: parseInt(
-                // Get the DPS id from the link to it
-                querystring
-                    .parse($(row[6]).find('a').attr('href') || '')
-                    .tpID.toString()
-            ),
+            id: ($(row[6]).find('a').attr('href')) // if the DPS is being corrected there is no link
+                ? parseInt(
+                      // Get the DPS id from the link to it
+                      querystring
+                          .parse($(row[6]).find('a').attr('href') || '')
+                          .tpID.toString()
+                  )
+                : null,
 
             customId: $(row[1]).text().trim(),
 
@@ -225,13 +229,20 @@ export const getNotices = async (
 
             additionalDesc: isBeingCorrected
                 ? shortDescription
+                      // if notice is being corrected etc, then there is an additional description with the class punainenfontti
                       .replace($(row[3]).find($('.punainenfontti')).text(), '')
                       .trim()
-                : undefined,
+                : null,
 
-            deadline: parseLocalizedDate($(row[4]).text().trim(), locale),
+            deadline:
+                $(row[4]).text().trim().length > 0
+                    ? parseLocalizedDate($(row[4]).text().trim(), locale)
+                    : null,
 
-            originalDeadline: $(row[4]).text().trim(),
+            originalDeadline:
+                $(row[4]).text().trim().length > 0
+                    ? $(row[4]).text().trim()
+                    : null,
         });
     }
 
@@ -288,12 +299,12 @@ export const getNotices = async (
                 $(row[3]).find('span').css('color') === 'red' ? true : false,
 
             deadline:
-                $(row[4]).text().trim().length !== 0
+                $(row[4]).text().trim().length > 0
                     ? parseLocalizedDate($(row[4]).text().trim(), locale)
                     : null,
 
             originalDeadline:
-                $(row[4]).text().trim().length !== 0
+                $(row[4]).text().trim().length > 0
                     ? $(row[4]).text().trim()
                     : null,
         });
