@@ -15,7 +15,6 @@ export interface Company {
     id: number;
     slug: string;
     name: string;
-    logo: string | undefined;
 }
 
 export interface Notices {
@@ -26,12 +25,12 @@ export interface Notices {
 }
 
 export interface DynamicPurchasingSystem {
-    id: number;
+    id: number | null; // if being corrected there is no way to get the ID
     customId: string;
     unit: string;
     title: string;
     shortDescription: string;
-    additionalDesc: string | undefined;
+    additionalDesc: string | null;
     isBeingCorrected: boolean;
     deadline: Date | null;
     originalDeadline: string | null;
