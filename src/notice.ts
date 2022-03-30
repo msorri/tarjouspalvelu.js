@@ -2,7 +2,6 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 
 import { Notice, Session } from './interfaces';
-import { getTenderId, removeTender } from './tender';
 import { matchLocale, parseLocalizedDate } from './utilities';
 
 /**
@@ -11,15 +10,13 @@ import { matchLocale, parseLocalizedDate } from './utilities';
  * @param companyId - ID of the company of the notice to get
  * @param noticeId  - ID of the notice to get
  * @param session   - The Session object to be used for getting the notice. **MUST be logged in.**
- * @param cleanup   - Whether to remove the automatically generated tender after getting the details from it. Defaults to true.
  *
  * @returns Notice object of the given notice
  */
 export const getNotice = async (
     companyId: number,
     noticeId: number,
-    session: Session,
-    cleanup = true
+    session: Session
 ): Promise<Notice> => {
     // Initialize the notice by going to the full notice page - this is required for the subpages to load because the notice ID is apparently stored in the session???
     const noticePage = await axios
@@ -157,14 +154,6 @@ export const getNotice = async (
             })
             .get(),
     };
-
-    // If cleanup paremeter is set, then remove the tender that got automatically created when getting the notice details
-    if (cleanup)
-        await removeTender(
-            companyId,
-            await getTenderId(companyId, noticeId, session),
-            session
-        );
 
     return notice; // Return the filled notice object
 };
