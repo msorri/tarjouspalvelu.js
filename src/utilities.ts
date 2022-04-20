@@ -14,7 +14,7 @@ import { Language, Session, Notice, NoticeIdentification } from './interfaces';
  * @returns Numeric company ID of the provided slug
  */
 export const companySlugToId = async (slug: string): Promise<number> => {
-    let id;
+    let id!: number;
 
     await axios
         .head(`https://tarjouspalvelu.fi/${slug}`, {
@@ -34,8 +34,6 @@ export const companySlugToId = async (slug: string): Promise<number> => {
             );
         });
 
-    if (!id) throw new Error('Failed getting company ID');
-
     return id;
 };
 
@@ -47,7 +45,7 @@ export const companySlugToId = async (slug: string): Promise<number> => {
  * @returns Session object including the session UUID and ID
  */
 export const getSession = async (slug: string): Promise<Session> => {
-    let uuid, id;
+    let uuid!: string, id!: string;
 
     await axios
         .head(`https://tarjouspalvelu.fi/${slug}`, {
@@ -62,13 +60,11 @@ export const getSession = async (slug: string): Promise<Session> => {
 
             uuid = querystring
                 .parse(error.response.headers.location)
-                .g.toString();
+                .g.toString(); // The uuid is in the querystring
             id = error.response.headers['set-cookie']
                 .join('')
-                .match(/TP=(.*?);/)[1];
+                .match(/SessionId_TP=(.*?);/)[1]; // The session id is in a cookie called "ASP.NET_SessionId_TP"
         });
-
-    if (!uuid || !id) throw new Error('Failed getting session');
 
     return {
         uuid,
@@ -79,38 +75,30 @@ export const getSession = async (slug: string): Promise<Session> => {
 /**
  * Log in a Tarjouspalvelu session
  *
- * @param slug     - The slug of the company to log in with (can be anyone, session is not restricted to it in any way)
- * @param username - The user name used for logging in
- * @param password - The password used for logging in
- * @param session  - Session object to be filled with the token
+ * @param companyId - The ID of the company to log in with (can be anyone, session is not restricted to it in any way)
+ * @param username  - The user name used for logging in
+ * @param password  - The password used for logging in
+ * @param session   - Session object to be filled with the token
  *
  * @returns The given session object filled with the session token
  */
 export const loginToSession = async (
-    slug: string,
+    companyId: number,
     username: string,
     password: string,
-    session?: Session
+    session: Session
 ): Promise<Session> => {
-    // If no session is provided to login with, create a new session with the provided slug
-    if (!session) session = await getSession(slug);
-
-    // Get company id from the provided slug
-    const companyId = await companySlugToId(slug);
-
     // Get WebForms inputs for the actual login request
     const response = await axios
         .get(
-            `https://tarjouspalvelu.fi/tarjouspyynnot.aspx?p=${companyId}&g=${session.uuid}`,
+            `https://tarjouspalvelu.fi/default.aspx?p=${companyId}&g=${session.uuid}`,
             {
                 headers: { Cookie: `ASP.NET_SessionId_TP=${session.id};` },
                 maxRedirects: 0,
             }
         )
-        .catch((error) => {
-            if (error.response.status === 302)
-                throw new Error('Failed to load page, bad session?');
-            else throw new Error('Failed to load page');
+        .catch(() => {
+            throw new Error('Failed to load index page, bad session?');
         });
 
     const $ = cheerio.load(response.data);
@@ -118,7 +106,7 @@ export const loginToSession = async (
     // Get the TarjPalv session token with the fetched WebForms inputs
     await axios
         .post(
-            `https://tarjouspalvelu.fi/tarjouspyynnot.aspx?p=${companyId}&g=${session.uuid}`,
+            `https://tarjouspalvelu.fi/default.aspx?p=${companyId}&g=${session.uuid}`,
             querystring.stringify({
                 __EVENTVALIDATION: $('[name=__EVENTVALIDATION]').attr('value'),
                 __VIEWSTATE: $('[name=__VIEWSTATE]').attr('value'),
@@ -137,17 +125,11 @@ export const loginToSession = async (
         .catch((error) => {
             // TarjPalv cookie is only returned when status is 302
             if (error.response.status === 302) {
-                // If for some reason the session is missing, throw an error
-                if (!session)
-                    throw new Error('Error in mutating session object');
-
                 // Fill the provided session object with the token
                 session.token = error.response.headers['set-cookie']
                     .join('')
                     .match(/TarjPalv=(.*?);/)[1];
             }
-            // If there's no status 302 then the username/password is wrong or we ended up to some very dark place
-            else throw new Error('Failed to log in, bad username/password?');
         });
 
     // If no token is present, then something went wrong
@@ -161,7 +143,7 @@ export const loginToSession = async (
  * Set the language of a Tarjouspalvelu session
  *
  * @param companyId - The ID of the company to set the language with (can be anyone, session is not restricted to it in any way)
- * @param language  - The language to set. Must be either "fi-FI", "sv-SE", "en-GB" or "da-DK".
+ * @param language  - The language to set. Must be a Language enum value
  * @param session   - Session object to set the language for
  *
  * @returns The given session object that has the language set
@@ -174,16 +156,14 @@ export const setSessionLanguage = async (
     // Get WebForms inputs for the actual login request
     const response = await axios
         .get(
-            `https://tarjouspalvelu.fi/tarjouspyynnot.aspx?p=${companyId}&g=${session.uuid}`,
+            `https://tarjouspalvelu.fi/default.aspx?p=${companyId}&g=${session.uuid}`,
             {
                 headers: { Cookie: `ASP.NET_SessionId_TP=${session.id};` },
                 maxRedirects: 0,
             }
         )
-        .catch((error) => {
-            if (error.response.status === 302)
-                throw new Error('Failed to load page, invalid session?');
-            else throw new Error('Failed to load page');
+        .catch(() => {
+            throw new Error('Failed to load index page, bad session?');
         });
 
     const $ = cheerio.load(response.data);
@@ -193,13 +173,13 @@ export const setSessionLanguage = async (
         'fi-FI': 'ctl00$header$Kieli_fiFI',
         'sv-SE': 'ctl00$header$Kieli_svSE',
         'en-GB': 'ctl00$header$Kieli_enGB',
-        'da-DK': 'ctl00$header$LinkButton1',
+        'da-DK': 'ctl00$header$LinkButton1', // For some reason this is different?
     };
 
     // Set the language with the fetched WebForms inputs
     await axios
         .post(
-            `https://tarjouspalvelu.fi/tarjouspyynnot.aspx?p=${companyId}&g=${session.uuid}`,
+            `https://tarjouspalvelu.fi/default.aspx?p=${companyId}&g=${session.uuid}`,
             querystring.stringify({
                 __EVENTVALIDATION: $('[name=__EVENTVALIDATION]').attr('value'),
                 __VIEWSTATE: $('[name=__VIEWSTATE]').attr('value'),
@@ -224,12 +204,9 @@ export const setSessionLanguage = async (
                 if (language === setLanguage) return session;
                 else throw new Error('Response has an unexpected language');
             }
-            // If there's no status 302 then the username/password is wrong or we ended up to some very dark place
-            else
-                throw new Error('Error setting the language, invalid session?');
         });
 
-    return session;
+    return session; // Return the session object given
 };
 
 /**
@@ -252,7 +229,7 @@ export const getSessionLanguage = async (
                 headers: {
                     Cookie: `ASP.NET_SessionId_TP=${session.id}; TarjPalv=${session.token};`,
                 },
-                maxRedirects: 0,
+                maxRedirects: 0, // If we get a 302 there is no session
             }
         )
         .catch((error) => {
@@ -261,7 +238,7 @@ export const getSessionLanguage = async (
             else throw new Error('Failed to load page');
         });
 
-    return matchLocale(page.data);
+    return matchLocale(page.data); // Match the locale from the page content
 };
 
 /**
@@ -274,10 +251,13 @@ export const getSessionLanguage = async (
 export const matchLocale = (
     html: string
 ): Language => {
+    // The locale is stored in a script element (e.g. var __cultureInfo = {"name":"fi-FI","...)
     const locale = html.match(/__cultureInfo = {"name":"(.*?)","/);
 
+    // If no match is found, throw an error
     if (locale === null) throw new Error('Failed to match the locale');
 
+    // Match the locale to the enum value
     switch (locale[1]) {
         case 'fi-FI':
             return Language.Fi
@@ -289,6 +269,7 @@ export const matchLocale = (
             return Language.Da
     }
 
+    // If we got here, something went wrong
     throw new Error('Failed to match the locale');
 };
 
@@ -337,8 +318,23 @@ export const parseLocalizedDate = (
     // Return the date with date-fns
     return zonedTimeToUtc(
         parse(date, languageTable[locale], new Date()),
-        'Europe/Helsinki' // Tarjouspalvelu.fi always returns times in Helsinki time
+        'Europe/Helsinki' // Tarjouspalvelu.fi always returns time in Helsinki time
     );
+};
+
+/**
+ * Fetch an image from the given URL, and convert it to Base64
+ *
+ * @param url - The URL of the image to be fetched
+ *
+ * @returns Base64 representation of the image
+ */
+export const fetchImage = async (url: string): Promise<string> => {
+     // Get the image from the URL as an array buffer
+    const img = await axios.get(url, { responseType: 'arraybuffer' } );
+
+    // Convert the array buffer to base64
+    return Buffer.from(img.data, 'binary').toString('base64');
 };
 
 /**
@@ -350,10 +346,10 @@ export const parseLocalizedDate = (
  *
  * @returns The full notice or identification details for the notice
  */
-export const resolveGlobalUuid = async (
+/* export const resolveGlobalUuid = async (
     slug: string,
     uuid: string,
-    getFullNotice? = true
+    getFullNotice = true
 ): Promise<Notice | NoticeIdentification> => {
     await axios
         .head(`https://tarjouspalvelu.fi/${slug}`, {
@@ -373,4 +369,4 @@ export const resolveGlobalUuid = async (
                 .join('')
                 .match(/TP=(.*?);/)[1];
         });
-};
+}; */
