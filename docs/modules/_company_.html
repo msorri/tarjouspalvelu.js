@@ -74,6 +74,9 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_company_.html#getcompanies" class="tsd-kind-icon">get<wbr>Companies</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_company_.html#getcompanylogo" class="tsd-kind-icon">get<wbr>Company<wbr>Logo</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_company_.html#getcompanyprocurementorganizationid" class="tsd-kind-icon">get<wbr>Company<wbr>Procurement<wbr>Organization<wbr>Id</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_company_.html#getcompanyprocurementunits" class="tsd-kind-icon">get<wbr>Company<wbr>Procurement<wbr>Units</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_company_.html#getnotices" class="tsd-kind-icon">get<wbr>Notices</a></li>
 							</ul>
 						</section>
@@ -86,13 +89,13 @@
 					<a name="getcompanies" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Companies</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Companies<span class="tsd-signature-symbol">(</span>getLogos<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.company.html" class="tsd-signature-type">Company</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Companies<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.company.html" class="tsd-signature-type">Company</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/b07f01a/src/company.ts#L16">company.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/f81acef/src/company.ts#L13">company.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -100,19 +103,116 @@
 									<p>Get all companies from the Tarjouspalvelu index page. <strong>Note that this may exclude some companies that aren&#39;t listed there.</strong></p>
 								</div>
 							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.company.html" class="tsd-signature-type">Company</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>Array of the companies</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="getcompanylogo" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Company<wbr>Logo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Company<wbr>Logo<span class="tsd-signature-symbol">(</span>companyId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/f81acef/src/company.ts#L78">company.ts:78</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the logo of a company.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> getLogos: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+									<h5>companyId: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>Get the company logos in Base64 format</p>
+											<p>The id of the company to get the logo of</p>
 										</div>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_.company.html" class="tsd-signature-type">Company</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Array of the companies</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The logo of the company in Base64 format</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="getcompanyprocurementorganizationid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Company<wbr>Procurement<wbr>Organization<wbr>Id</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Company<wbr>Procurement<wbr>Organization<wbr>Id<span class="tsd-signature-symbol">(</span>companyId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, session<span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_.session.html" class="tsd-signature-type">Session</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/f81acef/src/company.ts#L91">company.ts:91</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the procurement organization id of a company.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>companyId: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The id of the company to get the procurement organization id of</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>session: <a href="../interfaces/_interfaces_.session.html" class="tsd-signature-type">Session</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The procurement organization id of the company</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="getcompanyprocurementunits" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Company<wbr>Procurement<wbr>Units</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Company<wbr>Procurement<wbr>Units<span class="tsd-signature-symbol">(</span>companyId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, session<span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_.session.html" class="tsd-signature-type">Session</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/f81acef/src/company.ts#L123">company.ts:123</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the procurement units of a company.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>companyId: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The id of the company to get the procurement units of</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>session: <a href="../interfaces/_interfaces_.session.html" class="tsd-signature-type">Session</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The procurement units of the company in an array</p>
 						</li>
 					</ul>
 				</section>
@@ -126,7 +226,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/b07f01a/src/company.ts#L94">company.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/msorri/tarjouspalvelu.js/blob/f81acef/src/company.ts#L157">company.ts:157</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -191,6 +291,15 @@
 				<ul class="before-current">
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_company_.html#getcompanies" class="tsd-kind-icon">get<wbr>Companies</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_company_.html#getcompanylogo" class="tsd-kind-icon">get<wbr>Company<wbr>Logo</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_company_.html#getcompanyprocurementorganizationid" class="tsd-kind-icon">get<wbr>Company<wbr>Procurement<wbr>Organization<wbr>Id</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_company_.html#getcompanyprocurementunits" class="tsd-kind-icon">get<wbr>Company<wbr>Procurement<wbr>Units</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_company_.html#getnotices" class="tsd-kind-icon">get<wbr>Notices</a>
