@@ -22,6 +22,7 @@ src/
 tests/
 examples/
 local/
+coverage/
 
 # License is stated/linked to in package.json
 LICENSE
